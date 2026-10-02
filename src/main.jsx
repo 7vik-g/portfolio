@@ -49,6 +49,21 @@ const skills = [
   { label: 'Hardware design', items: ['Cadence Virtuoso', 'HSPICE', 'OpenLane', 'Sky130 PDK'] },
 ];
 
+const projects = [
+  {
+    title: 'Multi-Host Topology Simulator',
+    description: 'Built a support layer for high-priority networking tests spanning multi-host and multi-switch configurations to validate AI data center architectures.',
+    tech: ['Python', 'Networking', 'System Design'],
+    link: 'https://github.com/7vik-g'
+  },
+  {
+    title: 'Automated Timing Characterization',
+    description: 'Developed Bash-based automation for simulation-check generation to efficiently characterize standard memory elements in design flows.',
+    tech: ['Bash', 'Hardware Design', 'Simulation'],
+    link: 'https://github.com/7vik-g'
+  }
+];
+
 function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -82,6 +97,7 @@ function App() {
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#experience" onClick={closeMenu}>Experience</a>
           <a href="#skills" onClick={closeMenu}>Skills</a>
+          <a href="#projects" onClick={closeMenu}>Projects</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
           <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)} aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}>
             {darkMode ? <Sun size={17} /> : <Moon size={17} />}
@@ -149,17 +165,34 @@ function App() {
           </div>
         </section>
 
-        <section className="section-wrap project-section">
-          <div className="project-card"><div className="project-icon"><Network size={25} /></div><div><div className="section-kicker">Also on my desk</div><h2>Where performance meets <em>possibility.</em></h2><p>From pipelined RISC-V processors to edge-AI memory architectures, I enjoy exploring the ideas that will shape the next generation of computing.</p></div><ArrowUpRight className="project-arrow" size={28} /></div>
+        <section className="section-wrap project-section" id="projects">
+          <div className="section-heading"><div className="section-kicker">04 / Projects</div><span className="section-caption">Where performance meets possibility</span></div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingTop: '32px' }}>
+            {projects.map((project, index) => (
+              <div className="project-card" key={index} style={{ padding: '30px', gap: '20px' }}>
+                <div className="project-icon"><Network size={25} /></div>
+                <div>
+                  <h2 style={{ fontSize: '24px', margin: '0 0 10px 0' }}>{project.title}</h2>
+                  <p style={{ margin: '0 0 16px 0' }}>{project.description}</p>
+                  <div className="skill-tags">
+                    {project.tech.map((tech) => <span key={tech}>{tech}</span>)}
+                  </div>
+                </div>
+                <a href={project.link} target="_blank" rel="noreferrer" aria-label={`View ${project.title}`} style={{ alignSelf: 'center' }}>
+                  <ArrowUpRight className="project-arrow" size={28} />
+                </a>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="section-wrap contact-section" id="contact">
-          <div className="contact-top"><div className="section-kicker">04 / Contact</div><span>Have a thoughtful problem?</span></div>
+          <div className="contact-top"><div className="section-kicker">05 / Contact</div><span>Have a thoughtful problem?</span></div>
           <div className="contact-content"><h2>Let’s make something<br /><em>work better.</em></h2><div className="contact-side"><p>Whether you’re working on a challenging system, a new idea, or simply want to say hello, my inbox is open.</p><button className="email-button" onClick={copyEmail}>{copied ? <><Check size={17} /> Copied to clipboard</> : <><Mail size={17} /> sathvik4sunny@gmail.com</>}</button></div></div>
-          <div className="social-row"><div className="availability"><span className="status-dot" /> Open to interesting conversations</div><div className="social-links"><a href="mailto:sathvik4sunny@gmail.com" aria-label="Email Sathvik"><Mail size={17} /></a><a href="https://www.linkedin.com/in/sathvik-reddy-govindu-7a6b55235" target="_blank" rel="noreferrer" aria-label="LinkedIn"><span className="linkedin-glyph">in</span></a><a href="https://github.com/sathvikreddy" target="_blank" rel="noreferrer" aria-label="GitHub"><span className="github-glyph">GH</span></a></div></div>
+          <div className="social-row"><div className="availability"><span className="status-dot" /> Open to interesting conversations</div><div className="social-links"><a href="mailto:sathvik4sunny@gmail.com" aria-label="Email Sathvik"><Mail size={17} /></a><a href="https://www.linkedin.com/in/sathvik-reddy-govindu-7a6b55235" target="_blank" rel="noreferrer" aria-label="LinkedIn"><span className="linkedin-glyph">in</span></a><a href="https://github.com/7vik-g" target="_blank" rel="noreferrer" aria-label="GitHub"><span className="github-glyph">GH</span></a></div></div>
         </section>
       </main>
-      <footer className="site-footer section-wrap"><span>© 2024 Sathvik Reddy Govindu</span><span>Built with intent <Code2 size={14} /></span><a href="#top" aria-label="Back to top"><ArrowUpRight size={16} /></a></footer>
+      <footer className="site-footer section-wrap"><span>© 2026 Sathvik Reddy Govindu</span><span>Built with intent <Code2 size={14} /></span><a href="#top" aria-label="Back to top"><ArrowUpRight size={16} /></a></footer>
     </div>
   );
 }
